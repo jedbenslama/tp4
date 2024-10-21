@@ -98,26 +98,32 @@ int main() {
     if(choix[0]==5){
         exit(0);
     }
-    
-    printf("La taille de votre grille ?\n");
     int taillegrille;
+    if(choix[0]==2){
+        taillegrille=1+(rand()%9);
+    }else{
+    printf("La taille de votre grille ?\n");
     scanf("%i", &taillegrille);
     while (taillegrille < 1 || taillegrille > 9) {
         printf("de 1 à 9 svp\n");
         scanf("%i", &taillegrille);
     }
+    }
     int grille[taillegrille][taillegrille];
 
     initialiserGrille(taillegrille, grille);
-
-    printf("La remplir à moitié (1), tiers(2), ou quart(3) ?\n");
     int remplissage;
     int remplissagedemande = 25;
-    scanf("%i", &remplissage);
-    while (remplissage < 1 || remplissage > 3) {
-        printf("de 1 à 3 svp\n");
+    if(choix[0]==2){
+        remplissage = 1 + (rand() % 3);
+    }else{
+        printf("La remplir à moitié (1), tiers(2), ou quart(3) ?\n");
         scanf("%i", &remplissage);
-    }
+        while (remplissage < 1 || remplissage > 3) {
+            printf("de 1 à 3 svp\n");
+            scanf("%i", &remplissage);
+        }
+        }
     if (remplissage == 1) {
         remplissagedemande = 50;
     }
