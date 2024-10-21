@@ -73,29 +73,32 @@ void modifierGrille(int taillegrille, int grille[taillegrille][taillegrille]) {
     grille[lignemodifier - 1][colonnemodifier - 1] = nouvellevaleur;
 }
 
-int choixfunc(){
+void choixfunc(int choix[1]){
     printf("1. choix de la taille de grille souhaitée\n");
-    printf("2. initialiser la grille\n");
-    printf("3. générer la grille aléatoirement\n");
-    printf("4. résoudre la grille\n");
-    printf("5. afficher la grille\n");
-    printf("6. quitter\n");
-    int choix;
-    scanf("%i",&choix);
-    while (choix < 1 | choix > 6) {
+    printf("2. générer la grille aléatoirement\n");
+    printf("3. résoudre la grille\n");
+    printf("4. afficher la grille\n");
+    printf("5. quitter\n");
+    int currchoix;
+    scanf("%i",&currchoix);
+    while (currchoix < 1 | currchoix > 6) {
         printf("de 1 à 6 svp\n");
-        scanf("%i", &choix);
+        scanf("%i", &currchoix);
     }
-    return choix;
+    choix[0]=currchoix;
 }
 
 int main() {
     srand(time(NULL));
 
 
-    int choix=choixfunc();
+    int choix[1];
+    choixfunc(choix);
 
-
+    if(choix[0]==5){
+        exit(0);
+    }
+    
     printf("La taille de votre grille ?\n");
     int taillegrille;
     scanf("%i", &taillegrille);
